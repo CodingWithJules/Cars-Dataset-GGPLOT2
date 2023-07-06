@@ -1,0 +1,44 @@
+---
+title: "Manipulating a built-in dataset"
+author: "Jules Gdovic"
+date: "10/7/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(ggplot2)
+library(datasets)
+```
+
+## GGPLOT2 Graphics Functions 
+```{r}
+ggplot(cars, aes(x=dist)) +
+  geom_histogram(binwidth = 15, color = "red", fill="grey80") +
+  theme_bw() +
+  labs(x = "Stopping Distance (ft)", y = "Speed (mph)" , title = "CARS")
+```
+
+```{r}
+ggplot(cars, aes(x=speed, y=dist)) +
+  geom_point(size = 3) +
+  theme_bw() +
+  labs(x = "Speed (mph)", y = "Stopping Distance (ft)", title = "CARS")
+```
+
+## Basic Graphics Functions
+```{r}
+require(stats); require(graphics)
+plot(cars, xlab = "Speed (mph)", ylab = "Stopping distance (ft)",
+     las = 1)
+lines(lowess(cars$speed, cars$dist, f = 2/3, iter = 3), col = "red")
+title(main = "Cars Data")
+```
+
+```{r}
+require(stats); require(graphics)
+hist(cars$dist, xlab = "Distance (ft)", ylab = "Speed (mph)", col = "Red", las = 1)
+```
+
